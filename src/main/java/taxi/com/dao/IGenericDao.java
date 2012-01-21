@@ -44,8 +44,7 @@ public interface IGenericDao<E, PK extends Serializable>
     public void delete(E persistentObject);
 
     /**
-     * Retrieves an entity that was previously persisted to the database using
-     * the indicated id as primary key.
+     * Retrieves an entity that was previously persisted to the database using the indicated id as primary key.
      * 
      * @param id
      *            the entity id
