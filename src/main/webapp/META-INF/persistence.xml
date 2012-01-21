@@ -2,44 +2,7 @@
 <persistence version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="empassi">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>org.vaadin.appfoundation.authentication.data.User</class>
-		<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
-<!-- 		<class>com.emp.data.Employee</class> -->
-<!-- 		<class>com.emp.data.Department</class> -->
-<!-- 		<class>com.emp.data.Project</class> -->
-<!-- 		<class>com.emp.data.Task</class> -->
-
-<!-- 		<properties> -->
-<!-- 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> -->
-<!-- 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/employee" />  -->
-			
-<!-- 			<property name="hibernate.connection.username" value="root" /> -->
-<!-- 			<property name="hibernate.connection.password" value="udeshika" /> -->
-<!-- 			<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
-<!-- 		</properties> -->
-
-	</persistence-unit>
-	<persistence-unit name="testEclipse" transaction-type="RESOURCE_LOCAL">
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<class>org.vaadin.appfoundation.authentication.data.User</class>
-		<properties>
-
-			<property name="eclipselink.logging.level" value="OFF" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/employeeEclipse" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="udeshika" />
-			<property name="javax.persistence.jdbc.target-database"
-				value="org.eclipse.persistence.platform.database.MySQLPlatform" />
-			<property name="javax.persistence.jdbc.ddl-generation"
-				value="drop-and-create-tables" />
-			<property name="javax.persistence.jdbc.ddl-generation.output-mode"
-				value="database" />
-			<property name="javax.persistence.jdbc.orm.throw.exceptions"
-				value="true" />
-			<property name="eclipselink.weaving" value="static" />
-		</properties>
+	<persistence-unit name="taxiPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
 	</persistence-unit>
 </persistence>
