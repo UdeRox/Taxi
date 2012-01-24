@@ -126,7 +126,7 @@
 			<artifactId>jpa-api</artifactId>
 			<version>2.0-cr-1</version>
 		</dependency>
-		
+
 
 		<!-- Hibernate Entity Manager -->
 		<dependency>
@@ -173,8 +173,8 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
-		
-			<!-- Spring -->
+
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
@@ -220,7 +220,7 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
@@ -241,7 +241,16 @@
 			<artifactId>spring-security-core-tiger</artifactId>
 			<version>2.0.6.RELEASE</version>
 		</dependency>
-		
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>slf4j-api</artifactId> -->
+		<!-- <version>1.5.8</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
 	</dependencies>
 
 </project>

@@ -3,90 +3,167 @@
  */
 package taxi.com.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Version;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author UdeRox
  * 
  */
 @Entity
-public class Person
+public class Person implements Serializable
 {
+    private static final long serialVersionUID = -2260823915784764652L;
+    public static final String TIME_LOGIN = "login";
+    public static final String TIME_LOG_OUT = "logout";
+    public static final String BARCODE = "barCode";
+
     @Id
-    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    @Version
-    @Column(name = "version")
-    private Integer version;
+    @Column(nullable = false)
+    private String barCode;
 
-    private String name;
+    @Column(unique = true, nullable = false)
+    private String barCodeNDate;
 
-    private Integer number;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date login;
 
-    private Date date;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date logout;
 
-    public Date getDate()
+    /**
+     * <p>
+     * Getter method for id
+     * </p>
+     * 
+     * @return the id
+     */
+    public long getId()
     {
-        return date;
+        return id;
     }
 
-    public void setDate(Date date)
+    /**
+     * <p>
+     * Setter method for inId
+     * </p>
+     * 
+     * @param inId
+     *            the id to set
+     */
+    public void setId(final long inId)
     {
-        this.date = date;
+        id = inId;
     }
 
-    public String getName()
+    /**
+     * <p>
+     * Getter method for barCode
+     * </p>
+     * 
+     * @return the barCode
+     */
+    public String getBarCode()
     {
-        return name;
+        return barCode;
     }
 
-    public void setName(String name)
+    /**
+     * <p>
+     * Setter method for inBarCode
+     * </p>
+     * 
+     * @param inBarCode
+     *            the barCode to set
+     */
+    public void setBarCode(final String inBarCode)
     {
-        this.name = name;
+        barCode = inBarCode;
     }
 
-    public Integer getNumber()
+    /**
+     * <p>
+     * Getter method for login
+     * </p>
+     * 
+     * @return the login
+     */
+    public Date getLogin()
     {
-        return number;
+        return login;
     }
 
-    public void setNumber(Integer number)
+    /**
+     * <p>
+     * Setter method for inLogin
+     * </p>
+     * 
+     * @param inLogin
+     *            the login to set
+     */
+    public void setLogin(final Date inLogin)
     {
-        this.number = number;
+        login = inLogin;
     }
 
-    public Long getId()
+    /**
+     * <p>
+     * Getter method for logout
+     * </p>
+     * 
+     * @return the logout
+     */
+    public Date getLogout()
     {
-        return this.id;
+        return logout;
     }
 
-    public void setId(Long id)
+    /**
+     * <p>
+     * Setter method for inLogout.
+     * </p>
+     * 
+     * @param inLogout
+     *            the logout to set
+     */
+    public void setLogout(final Date inLogout)
     {
-        this.id = id;
+        logout = inLogout;
     }
 
-    public Integer getVersion()
+    /**
+     * <p>
+     * Setter method for barCodeNDate
+     * </p>
+     * 
+     * @param barCodeNDate
+     *            the barCodeNDate to set
+     */
+    public void setBarCodeNDate(final String barCodeNDate)
     {
-        return this.version;
+        this.barCodeNDate = barCodeNDate;
     }
 
-    public void setVersion(Integer version)
+    /**
+     * <p>
+     * Getter method for barCodeNDate
+     * </p>
+     * 
+     * @return the barCodeNDate
+     */
+    public String getBarCodeNDate()
     {
-        this.version = version;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Foo [date=" + date + ", id=" + id + ", name=" + name + ", number=" + number + ", version=" + version
-            + "]";
+        return barCodeNDate;
     }
 }
