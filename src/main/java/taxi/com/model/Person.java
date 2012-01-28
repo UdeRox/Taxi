@@ -4,47 +4,40 @@
 package taxi.com.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
- * @author UdeRox
+ * <p>
+ * Person entity class.
+ * </p>
  * 
+ * @author UdeRox
  */
 @Entity
 public class Person implements Serializable
 {
     private static final long serialVersionUID = -2260823915784764652L;
-    public static final String TIME_LOGIN = "login";
-    public static final String TIME_LOG_OUT = "logout";
-    public static final String BARCODE = "barCode";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false)
-    private String barCode;
-
-    @Column(unique = true, nullable = false)
-    private String barCodeNDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date login;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date logout;
-
+    private String firstName;
+    private String lastName;
+    private String nicNo;
+    
+    @Embedded
+    private ContactDetails contactDetails;
     /**
      * <p>
-     * Getter method for id
+     * Getter for id.
      * </p>
      * 
      * @return the id
@@ -56,114 +49,113 @@ public class Person implements Serializable
 
     /**
      * <p>
-     * Setter method for inId
+     * Setting value for id.
      * </p>
      * 
-     * @param inId
+     * @param id
      *            the id to set
      */
-    public void setId(final long inId)
+    public void setId(long id)
     {
-        id = inId;
+        this.id = id;
     }
 
     /**
      * <p>
-     * Getter method for barCode
+     * Getter for firstName.
      * </p>
      * 
-     * @return the barCode
+     * @return the firstName
      */
-    public String getBarCode()
+    public String getFirstName()
     {
-        return barCode;
+        return firstName;
     }
 
     /**
      * <p>
-     * Setter method for inBarCode
+     * Setting value for firstName.
      * </p>
      * 
-     * @param inBarCode
-     *            the barCode to set
+     * @param firstName
+     *            the firstName to set
      */
-    public void setBarCode(final String inBarCode)
+    public void setFirstName(String firstName)
     {
-        barCode = inBarCode;
+        this.firstName = firstName;
     }
 
     /**
      * <p>
-     * Getter method for login
+     * Getter for lastName.
      * </p>
      * 
-     * @return the login
+     * @return the lastName
      */
-    public Date getLogin()
+    public String getLastName()
     {
-        return login;
+        return lastName;
     }
 
     /**
      * <p>
-     * Setter method for inLogin
+     * Setting value for lastName.
      * </p>
      * 
-     * @param inLogin
-     *            the login to set
+     * @param lastName
+     *            the lastName to set
      */
-    public void setLogin(final Date inLogin)
+    public void setLastName(String lastName)
     {
-        login = inLogin;
+        this.lastName = lastName;
     }
 
     /**
      * <p>
-     * Getter method for logout
+     * Getter for nicNo.
      * </p>
      * 
-     * @return the logout
+     * @return the nicNo
      */
-    public Date getLogout()
+    public String getNicNo()
     {
-        return logout;
+        return nicNo;
     }
 
     /**
      * <p>
-     * Setter method for inLogout.
+     * Setting value for nicNo.
      * </p>
      * 
-     * @param inLogout
-     *            the logout to set
+     * @param nicNo
+     *            the nicNo to set
      */
-    public void setLogout(final Date inLogout)
+    public void setNicNo(String nicNo)
     {
-        logout = inLogout;
+        this.nicNo = nicNo;
     }
 
     /**
      * <p>
-     * Setter method for barCodeNDate
+     * Getter for contactDetails.
      * </p>
      * 
-     * @param barCodeNDate
-     *            the barCodeNDate to set
+     * @return the contactDetails
      */
-    public void setBarCodeNDate(final String barCodeNDate)
+    public ContactDetails getContactDetails()
     {
-        this.barCodeNDate = barCodeNDate;
+        return contactDetails;
     }
 
     /**
      * <p>
-     * Getter method for barCodeNDate
+     * Setting value for contactDetails.
      * </p>
      * 
-     * @return the barCodeNDate
+     * @param contactDetails the contactDetails to set
      */
-    public String getBarCodeNDate()
+    public void setContactDetails(ContactDetails contactDetails)
     {
-        return barCodeNDate;
+        this.contactDetails = contactDetails;
     }
 }
