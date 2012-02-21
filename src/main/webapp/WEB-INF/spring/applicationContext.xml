@@ -27,31 +27,32 @@
 
 	<context:component-scan base-package="taxi.com" />
 
-<!-- <security:http auto-config="true" access-denied-page="/accessdenied.jsp"> -->
-<!-- 		<security:form-login always-use-default-target="false" -->
-<!-- 			login-processing-url="/j_spring_security_check" default-target-url="/reps" -->
-<!-- 			login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=t" /> -->
-<!-- 		<security:logout logout-url="/j_spring_security_logout" /> -->
-<!-- 		<security:intercept-url pattern="/VAADIN/**" -->
-<!-- 			filters="none" /> -->
-<!-- 		<security:intercept-url pattern="/*.jsp" -->
-<!-- 			filters="none" /> -->
-<!-- 		<security:intercept-url pattern="/reps/*" -->
-<!-- 			filters="none" access="ROLE_SUPERVISOR" /> -->
-			
-<!-- 		<security:intercept-url pattern="/reps/**" access="IS_AUTHENTICATED_FULLY"/>  -->
+	<!-- <security:http auto-config="true" access-denied-page="/accessdenied.jsp"> -->
+	<!-- <security:form-login always-use-default-target="false" -->
+	<!-- login-processing-url="/j_spring_security_check" default-target-url="/reps" -->
+	<!-- login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=t" 
+		/> -->
+	<!-- <security:logout logout-url="/j_spring_security_logout" /> -->
+	<!-- <security:intercept-url pattern="/VAADIN/**" -->
+	<!-- filters="none" /> -->
+	<!-- <security:intercept-url pattern="/*.jsp" -->
+	<!-- filters="none" /> -->
+	<!-- <security:intercept-url pattern="/reps/*" -->
+	<!-- filters="none" access="ROLE_SUPERVISOR" /> -->
+
+	<!-- <security:intercept-url pattern="/reps/**" access="IS_AUTHENTICATED_FULLY"/> -->
 
 
-<!-- 	</security:http> -->
-<!-- 	<security:authentication-manager alias="authenticationManager"> -->
-<!-- 		<security:authentication-provider> -->
-<!-- 			<security:user-service> -->
-<!-- 				<security:user name="admin" password="admin" -->
-<!-- 					authorities="ROLE_USER, ROLE_ADMIN" /> -->
-<!-- 				<security:user name="bob" password="bob" authorities="ROLE_USER" /> -->
-<!-- 			</security:user-service> -->
-<!-- 		</security:authentication-provider> -->
-<!-- 	</security:authentication-manager> -->
+	<!-- </security:http> -->
+	<!-- <security:authentication-manager alias="authenticationManager"> -->
+	<!-- <security:authentication-provider> -->
+	<!-- <security:user-service> -->
+	<!-- <security:user name="admin" password="admin" -->
+	<!-- authorities="ROLE_USER, ROLE_ADMIN" /> -->
+	<!-- <security:user name="bob" password="bob" authorities="ROLE_USER" /> -->
+	<!-- </security:user-service> -->
+	<!-- </security:authentication-provider> -->
+	<!-- </security:authentication-manager> -->
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -63,4 +64,7 @@
 		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 	<bean
 		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
-</beans>
+
+	<bean id="personDao" class="taxi.com.dao.impl.PersonDaoImpl" />
+	<bean id="personService" class="taxi.com.service.impl.PersonServiceImpl" />
+</beans>		

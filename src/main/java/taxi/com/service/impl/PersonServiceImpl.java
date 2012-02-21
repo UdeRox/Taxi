@@ -34,6 +34,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import taxi.com.dao.IPersonDao;
+import taxi.com.dao.impl.PersonDaoImpl;
 import taxi.com.model.Person;
 import taxt.com.service.IPersonService;
 
@@ -50,13 +51,13 @@ import taxt.com.service.IPersonService;
  * 
  * @version $Id$
  **/
-@Service
+@Service("personService")
 @Transactional
 public class PersonServiceImpl implements IPersonService
 {
 
-    @Autowired
-    private IPersonDao personDao;
+//    @Autowired
+    private PersonDaoImpl personDao;
 
     /**
      * {@inheritDoc}

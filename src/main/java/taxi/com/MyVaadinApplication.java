@@ -15,6 +15,8 @@
  */
 package taxi.com;
 
+import taxi.com.ui.main.ApplicationMainLayout;
+
 import com.vaadin.Application;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -39,7 +41,7 @@ public class MyVaadinApplication extends Application
         {
             public void buttonClick(ClickEvent event)
             {
-                window.addComponent(new Label("Thank you for clicking"));
+                window.addComponent(new ApplicationMainLayout());
             }
         });
         window.addComponent(button);

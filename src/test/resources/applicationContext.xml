@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	  http://www.springframework.org/schema/context  
+	  http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+	  http://www.springframework.org/schema/tx  
+	  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+	  http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+
+	<context:property-placeholder location="classpath*:*.properties" />
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+<!-- 	<tx:annotation-driven /> -->
+	<context:annotation-config />
+	<context:component-scan base-package="taxi.com" />
+<!-- 	<aop:aspectj-autoproxy /> -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="org.hsqldb.jdbcDriver" p:url="jdbc:hsqldb:mem:test"
+		p:username="sa" p:password="" />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" p:dataSource-ref="dataSource" />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:dataSource-ref="dataSource" p:jpaVendorAdapter-ref="jpaAdapter">
+		<property name="persistenceUnitName" value="test"></property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate3.SpringSessionContext
+				</prop>
+			</props>
+		</property>
+
+	</bean>
+
+	<bean id="jpaAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+		p:databasePlatform="org.hibernate.dialect.HSQLDialect" p:generateDdl="true"
+		p:showSql="true">
+	</bean>
+
+	<bean id="hibernateSessionFactory" factory-bean="entityManagerFactory"
+		factory-method="getSessionFactory" />
+
+	<bean id="persistenceAnnotation"
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+	<bean
+		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+	<bean id="personDao" class="taxi.com.dao.impl.PersonDaoImpl" />
+	<bean id="personService" class="taxi.com.service.impl.PersonServiceImpl" />
+</beans>
